@@ -1,0 +1,11 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    command: ["mongod", "--bind_ip_all", "--auth"]
+    ports:
+      - "127.0.0.1:27017:27017"
+    env_file:
+      - .env
+    volumes:
+      - ./data/mongo:/data/db
